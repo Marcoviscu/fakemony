@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AddMessage from "./components/AddMessage";
+import FriendCardList from "./components/FriendCardList";
+import MessageCardList from "./components/MessageCardList";
+import "./App.css";
 
 function App() {
+  const [isRenderedList, setRenderedList] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App__friends">
+        <h3>Lista degli amici</h3>
+        <FriendCardList />
+      </div>
+      <div className="App_messages">
+        <AddMessage
+          isRenderedList={isRenderedList}
+          onAddButton={setRenderedList}
+        />
+        <MessageCardList
+          isRenderedList={isRenderedList}
+          setRenderedList={setRenderedList}
+        />
+      </div>
     </div>
   );
 }
