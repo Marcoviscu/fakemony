@@ -1,9 +1,19 @@
 import "./index.css";
 
-const Button = ({ textContent, color, type }) => {
+const Button = ({
+  btnTextContent = "Click",
+  color = "ghostwhite",
+  type = "button",
+  onHandleClick = () => {},
+}) => {
   return (
-    <button type={type} className="Button" style={{ backgroundColor: color }}>
-      {textContent}
+    <button
+      onClick={onHandleClick}
+      type={type}
+      className="Button"
+      style={{ backgroundColor: color }}
+    >
+      {btnTextContent}
     </button>
   );
 };

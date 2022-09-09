@@ -1,5 +1,6 @@
 .FriendCard {
-  width: 180px;
+  min-width: 250px;
+  max-width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,4 +26,10 @@
   font-size: 0.9rem;
   font-weight: bold;
   width: 100%;
+}
+
+@media (max-width: 767px) {
+  .FriendCard {
+    min-width: 400px;
+  }
 }

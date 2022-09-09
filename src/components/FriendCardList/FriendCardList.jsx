@@ -5,10 +5,11 @@ import "./index.css";
 
 const FriendCardList = () => {
   const [friendList, setFriendList] = useState([]);
+  const [isRenderedList, setRenderedList] = useState(false);
 
   useEffect(() => {
     GET("friends").then((data) => setFriendList(data));
-  }, []);
+  }, [isRenderedList]);
 
   const obj = {
     name: "pippo",
@@ -18,7 +19,13 @@ const FriendCardList = () => {
   return (
     <div className="FriendCardList">
       {friendList.length ? (
-        friendList.map((friend) => <FriendCard friendData={friend} />)
+        friendList.map((friend) => (
+          <FriendCard
+            setRenderedList={setRenderedList}
+            friendData={friend}
+            key={friend.id}
+          />
+        ))
       ) : (
         <p>Loading...</p>
       )}
